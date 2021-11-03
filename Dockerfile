@@ -1,5 +1,9 @@
 FROM buildpack-deps:bullseye-curl
 
+RUN apt-get update && \
+  apt-get install -y procps && \
+  rm -rf /var/lib/apt/lists/*
+
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
